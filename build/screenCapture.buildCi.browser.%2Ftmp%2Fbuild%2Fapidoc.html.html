@@ -1,0 +1,529 @@
+<html><head></head><body><div class="apidocDiv">
+<style>
+/*csslint
+*/
+.apidocDiv {
+    background: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.apidocDiv a[href] {
+    color: #33f;
+    font-weight: bold;
+    text-decoration: none;
+}
+.apidocDiv a[href]:hover {
+    text-decoration: underline;
+}
+.apidocCodeCommentSpan {
+    background: #bbf;
+    color: #000;
+    display: block;
+}
+.apidocCodeKeywordSpan {
+    color: #d00;
+    font-weight: bold;
+}
+.apidocCodePre {
+    background: #eef;
+    border: 1px solid;
+    color: #777;
+    padding: 5px;
+    white-space: pre-wrap;
+}
+.apidocFooterDiv {
+    margin-top: 20px;
+    text-align: center;
+}
+.apidocModuleLi {
+    margin-top: 10px;
+}
+.apidocSectionDiv {
+    border-top: 1px solid;
+    margin-top: 20px;
+}
+.apidocSignatureSpan {
+    color: #777;
+    font-weight: bold;
+}
+</style>
+<h1>api documentation for
+    <a href="https://github.com/Nijikokun/generate-schema">generate-schema (v2.5.0)</a>
+</h1>
+<h4>Effortlessly convert your JSON Object to JSON Schema, Mongoose Schema, or a Generic template for quick documentation / upstart.</h4>
+<div class="apidocSectionDiv"><a href="#apidoc.tableOfContents" id="apidoc.tableOfContents"><h1>table of contents</h1></a><ol>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.generate-schema">module generate-schema</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.generate-schema.bigquery">
+            function <span class="apidocSignatureSpan">generate-schema.</span>bigquery
+            <span class="apidocSignatureSpan">(data)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.generate-schema.generic">
+            function <span class="apidocSignatureSpan">generate-schema.</span>generic
+            <span class="apidocSignatureSpan">(object, output)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.generate-schema.json">
+            function <span class="apidocSignatureSpan">generate-schema.</span>json
+            <span class="apidocSignatureSpan">(title, object)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.generate-schema.mongoose">
+            function <span class="apidocSignatureSpan">generate-schema.</span>mongoose
+            <span class="apidocSignatureSpan">(object, output)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.generate-schema.mysql">
+            function <span class="apidocSignatureSpan">generate-schema.</span>mysql
+            <span class="apidocSignatureSpan">(tableName, object)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">generate-schema.</span>utils</span>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.generate-schema.utils">module generate-schema.utils</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.generate-schema.utils.arrayLastItem">
+            function <span class="apidocSignatureSpan">generate-schema.utils.</span>arrayLastItem
+            <span class="apidocSignatureSpan">(arr)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.generate-schema.utils.isDate">
+            function <span class="apidocSignatureSpan">generate-schema.utils.</span>isDate
+            <span class="apidocSignatureSpan">(date)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.generate-schema.utils.isDateString">
+            function <span class="apidocSignatureSpan">generate-schema.utils.</span>isDateString
+            <span class="apidocSignatureSpan">(string)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.generate-schema.utils.isNumber">
+            function <span class="apidocSignatureSpan">generate-schema.utils.</span>isNumber
+            <span class="apidocSignatureSpan">(value)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.generate-schema.utils.isTimestamp">
+            function <span class="apidocSignatureSpan">generate-schema.utils.</span>isTimestamp
+            <span class="apidocSignatureSpan">(string)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+</ol></div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.generate-schema" id="apidoc.module.generate-schema">module generate-schema</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.generate-schema.bigquery" id="apidoc.element.generate-schema.bigquery">
+        function <span class="apidocSignatureSpan">generate-schema.</span>bigquery
+        <span class="apidocSignatureSpan">(data)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function Process(data) {
+  return processFields([], data)
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+- [Usage](#usage)
+  + [Example](#example-1)
+  + [Methods](#methods)
+    - [`g.generic(Object object)`](#ggenericobject-object)
+    - [`g.mysql([String tableName,] Mixed object)`](#gmysqlstring-tablename-mixed-object)
+    - [`g.json([String title,] Mixed object)`](#gjsonstring-title-mixed-object)
+    - [`g.mongoose(Object object)`](#gmongooseobject-object)
+    - [`g.<span class="apidocCodeKeywordSpan">bigquery</span>(Object object)`](#gbigqueryobject-object)
+- [License](#license)
+
+# Installation
+
+Install with [npm](https://www.npmjs.com/):
+
+```bash
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.generate-schema.generic" id="apidoc.element.generate-schema.generic">
+        function <span class="apidocSignatureSpan">generate-schema.</span>generic
+        <span class="apidocSignatureSpan">(object, output)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function Process(object, output) {
+  output = output || {}
+
+  for (var key in object) {
+    var value = object[key]
+    var type = Type.string(value).toLowerCase()
+
+    if (type === 'undefined') {
+      type = 'null'
+    }
+
+    if (type === 'string' &amp;&amp; Utils.isDate(value)) {
+      type = 'date'
+    }
+
+    if (type !== 'object') {
+      output[key] = {
+        type: type
+      }
+    } else {
+      output[key] = Process(object[key])
+      output[key].type = type
+    }
+  }
+
+  return output
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+- [CLI](#cli)
+  * [Options](#options)
+  * [REPL Mode](#repl-interactive-mode)
+    + [Example](#example)
+- [Usage](#usage)
+  + [Example](#example-1)
+  + [Methods](#methods)
+    - [`g.<span class="apidocCodeKeywordSpan">generic</span>(Object object)`](#ggenericobject-object)
+    - [`g.mysql([String tableName,] Mixed object)`](#gmysqlstring-tablename-mixed-object)
+    - [`g.json([String title,] Mixed object)`](#gjsonstring-title-mixed-object)
+    - [`g.mongoose(Object object)`](#gmongooseobject-object)
+    - [`g.bigquery(Object object)`](#gbigqueryobject-object)
+- [License](#license)
+
+# Installation
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.generate-schema.json" id="apidoc.element.generate-schema.json">
+        function <span class="apidocSignatureSpan">generate-schema.</span>json
+        <span class="apidocSignatureSpan">(title, object)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function Process(title, object) {
+  var processOutput
+  var output = {
+    $schema: DRAFT
+  }
+
+  // Determine title exists
+  if (typeof title !== 'string') {
+    object = title
+    title = undefined
+  } else {
+    output.title = title
+  }
+
+  // Set initial object type
+  output.type = Type.string(object).toLowerCase()
+
+  // Process object
+  if (output.type === 'object') {
+    processOutput = processObject(object)
+    output.type = processOutput.type
+    output.properties = processOutput.properties
+  }
+
+  if (output.type === 'array') {
+    processOutput = processArray(object)
+    output.type = processOutput.type
+    output.items = processOutput.items
+
+    if (output.title) {
+      output.items.title = output.title
+      output.title += ' Set'
+    }
+  }
+
+  // Output
+  return output
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+  * [REPL Mode](#repl-interactive-mode)
+    + [Example](#example)
+- [Usage](#usage)
+  + [Example](#example-1)
+  + [Methods](#methods)
+    - [`g.generic(Object object)`](#ggenericobject-object)
+    - [`g.mysql([String tableName,] Mixed object)`](#gmysqlstring-tablename-mixed-object)
+    - [`g.<span class="apidocCodeKeywordSpan">json</span>([String title,] Mixed object)`](#gjsonstring-title-mixed-object)
+    - [`g.mongoose(Object object)`](#gmongooseobject-object)
+    - [`g.bigquery(Object object)`](#gbigqueryobject-object)
+- [License](#license)
+
+# Installation
+
+Install with [npm](https://www.npmjs.com/):
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.generate-schema.mongoose" id="apidoc.element.generate-schema.mongoose">
+        function <span class="apidocSignatureSpan">generate-schema.</span>mongoose
+        <span class="apidocSignatureSpan">(object, output)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function Process(object, output) {
+  var output = output || {}
+
+  for (var key in object) {
+    var value = object[key]
+    var originalType = null
+    var elementType = null
+    var type = null
+
+    if (value instanceof Buffer) {
+      type = 'buffer'
+    }
+
+    if (value != null &amp;&amp; typeof value.toString !== 'undefined' &amp;&amp; value.toString().match(/^[0-9a-fA-F]{24}$/)) {
+      type = 'objectid'
+    }
+
+    if (!type) {
+      type = Type.string(value).toLowerCase()
+    }
+
+    if (type === 'string' &amp;&amp; Utils.isDate(value)) {
+      type = 'date'
+    }
+
+    if (type === 'object') {
+      output[key] = Process(object[key])
+    } else {
+      if (type === 'undefined') {
+        type = 'null'
+      }
+
+      if (type === 'array' &amp;&amp; value.length) {
+        originalType = type
+        type = undefined
+
+        for (var index = 0, length = value.length; index &lt; length; index++) {
+          elementType = Type.string(value[index]).toLowerCase()
+
+          if (type &amp;&amp; elementType !== type) {
+            type = 'mixed'
+            break
+          } else {
+            type = elementType
+          }
+        }
+      }
+
+      if (originalType &amp;&amp; originalType === 'array') {
+        output[key] = { type: [getNativeType(type)] }
+      } else {
+        output[key] = { type: getNativeType(type) }
+      }
+    }
+  }
+
+  return output
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+    + [Example](#example)
+- [Usage](#usage)
+  + [Example](#example-1)
+  + [Methods](#methods)
+    - [`g.generic(Object object)`](#ggenericobject-object)
+    - [`g.mysql([String tableName,] Mixed object)`](#gmysqlstring-tablename-mixed-object)
+    - [`g.json([String title,] Mixed object)`](#gjsonstring-title-mixed-object)
+    - [`g.<span class="apidocCodeKeywordSpan">mongoose</span>(Object object)`](#gmongooseobject-object)
+    - [`g.bigquery(Object object)`](#gbigqueryobject-object)
+- [License](#license)
+
+# Installation
+
+Install with [npm](https://www.npmjs.com/):
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.generate-schema.mysql" id="apidoc.element.generate-schema.mysql">
+        function <span class="apidocSignatureSpan">generate-schema.</span>mysql
+        <span class="apidocSignatureSpan">(tableName, object)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function Process(tableName, object) {
+  if (typeof tableName !== 'string') {
+    object = tableName
+    tableName = 'generic'
+  }
+
+  return processObject(object, {
+    tableName: tableName
+  }).join('\n')
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+  * [Options](#options)
+  * [REPL Mode](#repl-interactive-mode)
+    + [Example](#example)
+- [Usage](#usage)
+  + [Example](#example-1)
+  + [Methods](#methods)
+    - [`g.generic(Object object)`](#ggenericobject-object)
+    - [`g.<span class="apidocCodeKeywordSpan">mysql</span>([String tableName,] Mixed object)`](#gmysqlstring-tablename-mixed-object
+)
+    - [`g.json([String title,] Mixed object)`](#gjsonstring-title-mixed-object)
+    - [`g.mongoose(Object object)`](#gmongooseobject-object)
+    - [`g.bigquery(Object object)`](#gbigqueryobject-object)
+- [License](#license)
+
+# Installation
+...</pre></li>
+    </ul>
+
+
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.generate-schema.utils" id="apidoc.module.generate-schema.utils">module generate-schema.utils</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.generate-schema.utils.arrayLastItem" id="apidoc.element.generate-schema.utils.arrayLastItem">
+        function <span class="apidocSignatureSpan">generate-schema.utils.</span>arrayLastItem
+        <span class="apidocSignatureSpan">(arr)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">arrayLastItem = function (arr) {
+  return arr[arr.length - 1]
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.generate-schema.utils.isDate" id="apidoc.element.generate-schema.utils.isDate">
+        function <span class="apidocSignatureSpan">generate-schema.utils.</span>isDate
+        <span class="apidocSignatureSpan">(date)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">isDate = function (date) {
+  return ((new Date(date).toString() !== 'Invalid Date' &amp;&amp; !isNaN(new Date(date))))
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.generate-schema.utils.isDateString" id="apidoc.element.generate-schema.utils.isDateString">
+        function <span class="apidocSignatureSpan">generate-schema.utils.</span>isDateString
+        <span class="apidocSignatureSpan">(string)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">isDateString = function (string) {
+  return string.match(DATE_REGEXP)
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.generate-schema.utils.isNumber" id="apidoc.element.generate-schema.utils.isNumber">
+        function <span class="apidocSignatureSpan">generate-schema.utils.</span>isNumber
+        <span class="apidocSignatureSpan">(value)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">isNumber = function (value) {
+	return (typeof value === 'number' || Object.prototype.toString.call(value) === '[object Number]')
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.generate-schema.utils.isTimestamp" id="apidoc.element.generate-schema.utils.isTimestamp">
+        function <span class="apidocSignatureSpan">generate-schema.utils.</span>isTimestamp
+        <span class="apidocSignatureSpan">(string)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">isTimestamp = function (string) {
+  return string.length &gt; 18 &amp;&amp; !isNaN((new Date(string)).getTime())
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocFooterDiv">
+    [ this document was created with
+    <a href="https://github.com/kaizhu256/node-utility2" target="_blank">utility2</a>
+    ]
+</div>
+</div>
+</body></html>
